@@ -8,7 +8,7 @@ public class Main {
 
 
 	public static void main(String[] args) {
-		int[] numbersUsed = {1,2,3,4,5,6,7,8,9}; // they become used once they all turn into '0'.
+		ArrayList<Integer> numbersUsed = new ArrayList<Integer>();
 		
 		System.out.println(" -- TICK TAC TOE --");
 
@@ -39,7 +39,7 @@ public class Main {
             
 			if (p1Choice == 1) {
 				theGame[0][0] = "X";
-				numbersUsed[0] = 0;
+				numbersUsed.add(1);
 				
 				for(int x: numbersUsed){
 				    System.out.print(" [" + x + " ]");    
@@ -48,6 +48,12 @@ public class Main {
 				
 			}else if(p1Choice == 2){
 			     theGame[0][1] = "X";   
+			     numbersUsed.add(2);
+			     
+			     for(int x: numbersUsed){
+			          System.out.print(" [" + x + " ]");   
+			     }
+			     System.out.println("\n");
 			}
 			
 			
@@ -60,8 +66,11 @@ public class Main {
 				System.out.println("");
 			}
 			
+			
+			//----------- PLAYER 2 GOES NOW ---------------------------------------------------------------------------------------------------------------------------------------------
 			System.out.println("Player 2, GO! (You are O)\nPress a single number between 1-9.");
 			int p2Choice = sc.nextInt();
+			
 			
 			//----------------------------------- MAKE SURE NO OTHER NUMBER IS BEING ENTERED --------------------------------
 			if (p2Choice < 1 || p2Choice > 9) {
@@ -81,8 +90,22 @@ public class Main {
 			
 			//-------------------Check if p1 already selected it--------------
 			
+			if(numbersUsed.contains(1) || numbersUsed.contains(2) || numbersUsed.contains(3) || numbersUsed.contains(4) || numbersUsed.contains(5) || numbersUsed.contains(6) || numbersUsed.contains(7) || numbersUsed.contains(8) || numbersUsed.contains(9)){
+			     while(true){
+			         System.out.println("That number is already being used.\nTry another number..");
+			         p2Choice = sc.nextInt();   
+			         if(p2Choice != p1Choice){
+			              break;   
+			         }
+			     }
+			     
+			}
 			
 			
+			
+			
+			
+			/*
 			if(theGame[0][0] == "X" && p2Choice == 1){
 			        
 			     while(p2Choice == 1){
@@ -101,7 +124,7 @@ public class Main {
 			             }
 			     }// while
 			}
-			
+			*/
 			
 			
 			//--------------------------------------------------------------------------------------
