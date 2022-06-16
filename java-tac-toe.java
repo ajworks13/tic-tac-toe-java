@@ -1,5 +1,11 @@
 import java.util.*;
 
+/*
+NOTE:
+    Left off trying to catch the same numbers being used after player 2 goes.
+*/
+
+
 public class Main {
 	//Global vars
 	static Scanner sc = new Scanner(System.in);
@@ -41,7 +47,21 @@ public class Main {
             
             //-----------------------------------------------------CHECK IF PLAYER 2 SELECTED IT ALREADY-----------
             
-            if(numbersUsed.contains(1) || numbersUsed.contains(2) || numbersUsed.contains(3) || numbersUsed.contains(4) || numbersUsed.contains(5) || numbersUsed.contains(6) || numbersUsed.contains(7) || numbersUsed.contains(8) || numbersUsed.contains(9)){
+            if(p1Choice == p2Choice){
+			        System.out.println("That number is already being used.\nTry another number..");
+			        if(numbersUsed.contains(1) || numbersUsed.contains(2) || numbersUsed.contains(3) || numbersUsed.contains(4) || numbersUsed.contains(5) || numbersUsed.contains(6) || numbersUsed.contains(7) || numbersUsed.contains(8) || numbersUsed.contains(9)){
+        			     while(true){
+        			         System.out.println("That number is already being used.\nTry another number..");
+        			         p1Choice = sc.nextInt();   
+        			         if(p1Choice != p2Choice){
+        			              break;   
+        			         }
+        			     }
+        			     
+        			}
+			}
+			
+			if(numbersUsed.contains(1) || numbersUsed.contains(2) || numbersUsed.contains(3) || numbersUsed.contains(4) || numbersUsed.contains(5) || numbersUsed.contains(6) || numbersUsed.contains(7) || numbersUsed.contains(8) || numbersUsed.contains(9)){
 			     while(true){
 			         System.out.println("That number is already being used.\nTry another number..");
 			         p1Choice = sc.nextInt();   
