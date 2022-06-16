@@ -8,7 +8,7 @@ public class Main {
 
 
 	public static void main(String[] args) {
-		int[] numbersUsed = {1,2,3,4,5,6,7,8,9};
+		int[] numbersUsed = {1,2,3,4,5,6,7,8,9}; // they become used once they all turn into '0'.
 		
 		System.out.println(" -- TICK TAC TOE --");
 
@@ -21,7 +21,8 @@ public class Main {
 		do {
 			System.out.println("Player 1, GO! (You are X)\n Press a single number between 1-9.");
 			int p1Choice = sc.nextInt();
-
+            
+            //----------------------------------- MAKE SURE NO OTHER NUMBER IS BEING ENTERED --------------------------------
 			if (p1Choice < 1 || p1Choice > 9) {
 				
 			    do{
@@ -34,15 +35,16 @@ public class Main {
 			         }   
 			    }while(true);
 			}
-            
+            //-------------------------------------------------------------------------------------------------------------------------------------------------------------------
             
 			if (p1Choice == 1) {
 				theGame[0][0] = "X";
 				numbersUsed[0] = 0;
 				
 				for(int x: numbersUsed){
-				    System.out.println(x);    
+				    System.out.print(" [" + x + " ]");    
 				}
+				System.out.println("\n");
 				
 			}else if(p1Choice == 2){
 			     theGame[0][1] = "X";   
@@ -61,11 +63,26 @@ public class Main {
 			System.out.println("Player 2, GO! (You are O)\nPress a single number between 1-9.");
 			int p2Choice = sc.nextInt();
 			
+			//----------------------------------- MAKE SURE NO OTHER NUMBER IS BEING ENTERED --------------------------------
 			if (p2Choice < 1 || p2Choice > 9) {
-				System.out.println("\nCan NOT exceed a number grader than 9 or less than 1.\nTry again..");
+				
+			    do{
+			         System.out.println("\nCan NOT exceed a number grader than 9 or less than 1.\nTry again..");
+			         p2Choice = sc.nextInt();
+			         if(p2Choice < 1 || p2Choice > 9){
+			             System.out.println("Try again..");    
+			         }else if(p2Choice >= 1 || p2Choice <= 9){
+			             break;    
+			         }   
+			    }while(true);
 			}
+			//-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+			
 			
 			//-------------------Check if p1 already selected it--------------
+			
+			
+			
 			if(theGame[0][0] == "X" && p2Choice == 1){
 			        
 			     while(p2Choice == 1){
@@ -84,6 +101,9 @@ public class Main {
 			             }
 			     }// while
 			}
+			
+			
+			
 			//--------------------------------------------------------------------------------------
 			
 			if (p2Choice == 1) {
