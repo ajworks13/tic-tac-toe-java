@@ -4,9 +4,12 @@ public class Main {
 	//Global vars
 	static Scanner sc = new Scanner(System.in);
 	static boolean gameOver = false;
+	
 
 
 	public static void main(String[] args) {
+		int[] numbersUsed = {1,2,3,4,5,6,7,8,9};
+		
 		System.out.println(" -- TICK TAC TOE --");
 
 		String[][] theGame = {
@@ -20,12 +23,27 @@ public class Main {
 			int p1Choice = sc.nextInt();
 
 			if (p1Choice < 1 || p1Choice > 9) {
-				System.out.println("\nCan NOT exceed a number grader than 9 or less than 1.\nTry again..");
+				
+			    do{
+			         System.out.println("\nCan NOT exceed a number grader than 9 or less than 1.\nTry again..");
+			         p1Choice = sc.nextInt();
+			         if(p1Choice < 1 || p1Choice > 9){
+			             System.out.println("Try again..");    
+			         }else if(p1Choice >= 1 || p1Choice <= 9){
+			             break;    
+			         }   
+			    }while(true);
 			}
             
             
 			if (p1Choice == 1) {
 				theGame[0][0] = "X";
+				numbersUsed[0] = 0;
+				
+				for(int x: numbersUsed){
+				    System.out.println(x);    
+				}
+				
 			}else if(p1Choice == 2){
 			     theGame[0][1] = "X";   
 			}
@@ -54,10 +72,17 @@ public class Main {
 			             System.out.println("\nPlayer 1 already selected that. Try another number..\n");
 			             p2Choice = sc.nextInt();
 			             
+			             for (int i = 0; i < theGame.length; ++i) {
+                				for (int j = 0; j < theGame[i].length; ++j) {
+                					System.out.print(theGame[i][j]);
+                				}
+                				System.out.println("");
+                		  }
+                		  
 			             if(p2Choice != 1){
 			                  break;   
 			             }
-			     }
+			     }// while
 			}
 			//--------------------------------------------------------------------------------------
 			
@@ -67,6 +92,12 @@ public class Main {
 			     theGame[0][1] = "O";   
 			}
 			
+			for (int i = 0; i < theGame.length; ++i) {
+    				for (int j = 0; j < theGame[i].length; ++j) {
+    					System.out.print(theGame[i][j]);
+    				}
+    				System.out.println("");
+    		 }
         
 		} while (gameOver != true);
 
